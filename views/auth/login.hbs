@@ -3,9 +3,9 @@
 <form action="/login" method="POST">
   <div class="mb-3">
     <label for="email" class="form-label">Email address</label>
-    <input value="{{user.email}}" type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email" aria-describedby="emailHelp" required>
+    <input value="{{user.email}}" type="email" class="form-control {{#if errorMessage}}is-invalid{{/if}}" id="email" name="email" aria-describedby="emailHelp" required>
     <div class="invalid-feedback">
-      {{errors.email}}
+      {{errorMessage}}
     </div>
   </div>
   <div class="mb-3">

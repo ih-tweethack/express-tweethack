@@ -42,3 +42,5 @@ passport.use('local-auth', new LocalStrategy(
       .catch(err => next(err))
   }
 ))
+
+module.exports.GENERIC_ERROR_MESSAGE = GENERIC_ERROR_MESSAGE;
