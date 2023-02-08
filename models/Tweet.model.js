@@ -14,12 +14,19 @@ const tweetSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-    }
+    },
   },
   {
     timestamps: true,
   }
 )
+
+tweetSchema.virtual('likes', {
+  ref: 'Like',
+  foreignField: 'tweet',
+  localField: '_id',
+  justOne: false
+})
 
 const Tweet = mongoose.model('Tweet', tweetSchema);
 

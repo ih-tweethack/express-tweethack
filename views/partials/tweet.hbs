@@ -17,7 +17,12 @@
       </form>
     {{/isOwner}}
     <button class="like-btn btn text-primary" type="button" value="{{tweet.id}}">
-      <i class="bi bi-heart"></i>
+      <span>{{tweet.likes.length}}</span>
+      {{#hasLike currentUser=currentUser tweet=tweet}}
+        <i class="bi bi-heart-fill"></i>
+      {{else}}
+        <i class="bi bi-heart"></i>
+      {{/hasLike}}
     </button>
   </div>
 </div>

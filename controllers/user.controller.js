@@ -5,6 +5,7 @@ module.exports.timeline = (req, res, next) => {
   // Tweet.find({ user: { $ne: req.user.id } })
   Tweet.find()
     .populate('user')
+    .populate('likes')
     .then(tweets => {
       res.render('user/timeline', { tweets });
     })
@@ -14,6 +15,7 @@ module.exports.timeline = (req, res, next) => {
 module.exports.profile = (req, res, next) => {
   Tweet.find({ user: req.user.id })
     .populate('user')
+    .populate('likes')
     .then(tweets => {
       res.render('user/profile', { tweets });
     })
@@ -35,12 +37,12 @@ module.exports.like = (req, res, next) => {
       if (dbLike) {
         return Like.findByIdAndDelete(dbLike.id) // Borrar el like = dislike
           .then((createdLike) => {
-            res.status(204).json({ like: createdLike })
+            res.status(204).json({ deleted: true })
           })
       } else {
         return Like.create(like)
           .then(() => {
-            res.status(201).json({ ok: true })
+            res.status(201).json({ deleted: false })
           })
       }
     })

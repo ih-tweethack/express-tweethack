@@ -15,6 +15,9 @@ const likeSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    toObject: {
+      virtuals: true
+    }
   }
 )
 

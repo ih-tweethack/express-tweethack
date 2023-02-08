@@ -34,6 +34,9 @@ const userSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    toObject: { // Si usamos virtuals en helpers o cosas de hbs, ponemos esta linea
+      virtuals: true
+    },
   }
 );
 
@@ -54,6 +57,13 @@ userSchema.pre('save', function(next) {
 userSchema.methods.checkPassword = function(passwordToCompare) {
   return bcrypt.compare(passwordToCompare, this.password);
 }
+
+userSchema.virtual('likes', {
+  ref: 'Like',
+  foreignField: 'user',
+  localField: '_id',
+  justOne: false
+})
 
 const User = mongoose.model('User', userSchema);
 
