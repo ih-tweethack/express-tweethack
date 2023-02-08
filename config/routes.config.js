@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const authController = require('../controllers/auth.controller');
 const userController = require('../controllers/user.controller');
+const tweetController = require('../controllers/tweets.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
 
 /* Main route */
@@ -17,5 +18,8 @@ router.get('/logout', authMiddleware.isAuthenticated, authController.doLogout);
 
 /* User */
 router.get('/timeline', authMiddleware.isAuthenticated, userController.timeline);
+
+router.get('/new-tweet', authMiddleware.isAuthenticated, tweetController.create);
+router.post('/new-tweet', authMiddleware.isAuthenticated, tweetController.doCreate);
 
 module.exports = router;
