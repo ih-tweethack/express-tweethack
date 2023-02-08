@@ -19,7 +19,10 @@ router.get('/logout', authMiddleware.isAuthenticated, authController.doLogout);
 /* User */
 router.get('/timeline', authMiddleware.isAuthenticated, userController.timeline);
 
+router.get('/profile', authMiddleware.isAuthenticated, userController.profile);
+
 router.get('/new-tweet', authMiddleware.isAuthenticated, tweetController.create);
 router.post('/new-tweet', authMiddleware.isAuthenticated, tweetController.doCreate);
+router.post('/tweets/:id/delete', authMiddleware.isAuthenticated, tweetController.delete);
 
 module.exports = router;

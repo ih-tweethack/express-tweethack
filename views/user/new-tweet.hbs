@@ -1,12 +1,18 @@
-<h1 class="text-primary">Tell the world something new</h1>
+<div class="d-flex min-vh-100 gap-2">
+  {{> sidebar}}
+  <section class="border border-bottom-0 border-top-0 w-100 p-4">
+    <h1 class="text-primary">Tell the world something new</h1>
 
-<form action="/new-tweet" method="POST">
-  <div class="mb-3">
-    <label for="body" class="form-label">Tweet</label>
-    <textarea class="form-control {{#if errors.body}}is-invalid{{/if}}" id="body" rows="3" name="body" required>{{tweet}}</textarea>
-    <div class="invalid-feedback">
-      {{errors.body}}
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <form action="/new-tweet" method="POST">
+      <div class="mb-3">
+        <label for="body" class="form-label">Tweet</label>
+        <textarea class="form-control {{#if errors.body}}is-invalid{{/if}}" id="body" rows="3" name="body" required>{{tweet}}</textarea>
+        <div class="invalid-feedback">
+          {{errors.body}}
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </section>
+</div>

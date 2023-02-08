@@ -4,8 +4,17 @@
       <img style="width: fit-content; height:fit-content" src="https://via.placeholder.com/100x150" class="rounded float-start" alt="...">
     </div>
     <div>
-      <h4 class="mb-1">{{this.user.username}}</h4>
-      <p class="m-0">{{this.body}}</p>
+      <h4 class="mb-1">{{tweet.user.username}}</h4>
+      <p class="m-0">{{tweet.body}}</p>
     </div>
+  </div>
+  <div style="margin-left: 60px;">
+    {{#isOwner currentUser=currentUser tweetOwnerId=tweet.user.id}}
+      <form action="/tweets/{{tweet.id}}/delete" method="POST">
+        <button class="btn text-danger" type="submit">
+          <i class="bi bi-trash3-fill"></i>
+        </button>
+      </form>
+    {{/isOwner}}
   </div>
 </div>

@@ -23,3 +23,11 @@ module.exports.doCreate = (req, res, next) => {
       next(err)
     })
 }
+
+module.exports.delete = (req, res, next) => {
+  Tweet.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.redirect('/profile')
+    })
+    .catch(err => next(err))
+}

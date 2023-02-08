@@ -1,9 +1,14 @@
 <div class="d-flex min-vh-100 gap-2">
   {{> sidebar}}
   <section class="border border-bottom-0 border-top-0 w-100 p-4">
-    <h1 class="text-primary">What's happening</h1>
+    <h1 class="text-primary">Profile</h1>
     {{#each tweets as |tweet|}}
       {{> tweet tweet=tweet currentUser=../currentUser}}
+    {{else}}
+      <div>
+        <p>You don't have tweet yet</p>
+        <a class="btn btn-primary" href="/new-tweet">Go and create your first tweet</a>
+      </div>
     {{/each}}
   </section>
 </div>
