@@ -25,4 +25,6 @@ router.get('/new-tweet', authMiddleware.isAuthenticated, tweetController.create)
 router.post('/new-tweet', authMiddleware.isAuthenticated, tweetController.doCreate);
 router.post('/tweets/:id/delete', authMiddleware.isAuthenticated, tweetController.delete);
 
+router.post('/tweets/:id/like', authMiddleware.isAuthenticated, userController.like);
+
 module.exports = router;
